@@ -107,10 +107,14 @@ def clean_id(id):
 
 
 def lectura():
-    driver = webdriver.Chrome()# webdriver.Firefox()
+    options = webdriver.ChromeOptions() #webdriver.Chrome()# webdriver.Firefox()
     #  driver.maximize_window()
     # driver.get('https://'+ciudad+'.olx.com.co/apartamentos-casas-alquiler-cat-363')
     # driver.get('https://www.olx.com.co/antioquia_g2007002/apartamentos-casas-arriendo_c363')
+
+    options.add_argument("--start-maximized")
+    driver = webdriver.Chrome(chrome_options=options)
+
     links = []
     links_depurado = []
     links_depurados = []
@@ -124,6 +128,7 @@ def lectura():
 
         for x in range(1, 30):
             time.sleep(1)
+            # driver.execute_script( "window.scrollTo(0,document.body.scrollHeight)")
             driver.execute_script(
                 "window.scrollTo(0,document.body.scrollHeight)")
             time.sleep(5)
