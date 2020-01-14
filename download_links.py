@@ -1,4 +1,5 @@
 # coding=utf-8
+ 
 import datetime
 import random
 import time
@@ -80,8 +81,12 @@ def clean_post_content(content):
         "ú": "u",
         'ñ': 'ni'
     }
-
+    print(content)
+    content = content.encode('utf-8').strip()
     content = str(content).lower().replace('ñ', 'ni').replace(' ', '')
+    print('********')
+    print(content)
+   
     # print('********')
     # print(content)
     # print('********')
@@ -107,13 +112,17 @@ def clean_id(id):
 
 
 def lectura():
-    options = webdriver.ChromeOptions() #webdriver.Chrome()# webdriver.Firefox()
-    #  driver.maximize_window()
+   # options = webdriver.ChromeOptions() #webdriver.Chrome()# webdriver.Firefox()
+    
     # driver.get('https://'+ciudad+'.olx.com.co/apartamentos-casas-alquiler-cat-363')
     # driver.get('https://www.olx.com.co/antioquia_g2007002/apartamentos-casas-arriendo_c363')
 
-    options.add_argument("--start-maximized")
-    driver = webdriver.Chrome(chrome_options=options)
+   # driver = webdriver.Chrome()# webdriver.Firefox()
+  #  options.add_argument("--start-maximized")
+   # driver = webdriver.Chrome(chrome_options=options)
+
+    driver = webdriver.Firefox()
+    driver.maximize_window()
 
     links = []
     links_depurado = []
@@ -128,9 +137,10 @@ def lectura():
 
         for x in range(1, 30):
             time.sleep(1)
-            # driver.execute_script( "window.scrollTo(0,document.body.scrollHeight)")
-            driver.execute_script(
-                "window.scrollTo(0,document.body.scrollHeight)")
+            driver.execute_script( "window.scrollTo(0,document.body.scrollHeight)")
+
+        
+
             time.sleep(5)
             driver.find_element_by_xpath(
                 "/html/body/div[1]/div/main/div/section/div/div/div[5]/div[2]/div/div[3]/button").click()
