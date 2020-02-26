@@ -155,7 +155,7 @@ def lectura():
     while (cont):
         # driver.maximize_window()
 
-        for x in range(1, 30):
+        for x in range(1, 2):
             time.sleep(1)
             driver.execute_script( "window.scrollTo(0,document.body.scrollHeight)")
 
@@ -187,7 +187,7 @@ def lectura():
         print('***')
         print(m)
         print('***')
-        if m == 600:
+        if m == 40:
             cont = False
 
         for i in range(len(text_contents)):
